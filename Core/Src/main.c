@@ -27,7 +27,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "gfx01m1_lcd.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -98,7 +98,7 @@ int main(void)
   MX_CRC_Init();
   MX_TouchGFX_Init();
   /* USER CODE BEGIN 2 */
-
+  gfx01m1_lcd_init();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -160,11 +160,13 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
+extern void touchgfxSignalVSync(void);
+
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
 	if (htim->Instance == TIM3)
 	{
-		HAL_GPIO_TogglePin(LD1_GPIO_Port, LD1_Pin);
+		touchgfxSignalVSync();
 	}
 }
 /* USER CODE END 4 */
