@@ -1,0 +1,247 @@
+{
+  "Application": {
+    "Screens": [
+      {
+        "Name": "Screen1",
+        "Components": [
+          {
+            "Type": "Image",
+            "Name": "image1",
+            "Width": 320,
+            "Height": 240,
+            "RelativeFilename": "tux_vertigo.png"
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 1,
+              "Name": "UP"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Screen2"
+            }
+          }
+        ]
+      },
+      {
+        "Name": "Screen2",
+        "Components": [
+          {
+            "Type": "Image",
+            "Name": "image1",
+            "Width": 320,
+            "Height": 240,
+            "RelativeFilename": "circles_vortex_abstraction_1239570_320x240.png"
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 1,
+              "Name": "UP"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Screen3"
+            }
+          },
+          {
+            "InteractionName": "Interaction2",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 2,
+              "Name": "DOWN"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Screen1"
+            }
+          }
+        ]
+      },
+      {
+        "Name": "Screen3",
+        "Components": [
+          {
+            "Type": "Image",
+            "Name": "image1",
+            "Width": 320,
+            "Height": 240,
+            "RelativeFilename": "nature_lake_mountains_166874_320x240.png"
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 1,
+              "Name": "UP"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Screen4"
+            }
+          },
+          {
+            "InteractionName": "Interaction2",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 2,
+              "Name": "DOWN"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Screen2"
+            }
+          }
+        ]
+      },
+      {
+        "Name": "Screen4",
+        "Components": [
+          {
+            "Type": "Image",
+            "Name": "image1",
+            "Width": 320,
+            "Height": 240,
+            "RelativeFilename": "nature_light_line_50566_320x240.png"
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 1,
+              "Name": "UP"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Screen5"
+            }
+          },
+          {
+            "InteractionName": "Interaction2",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 2,
+              "Name": "DOWN"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Screen3"
+            }
+          }
+        ]
+      },
+      {
+        "Name": "Screen5",
+        "Components": [
+          {
+            "Type": "Image",
+            "Name": "image1",
+            "X": 10,
+            "Y": 8,
+            "Width": 300,
+            "Height": 225,
+            "RelativeFilename": "pattern_glow_lines_1117662_300x225.png"
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 2,
+              "Name": "DOWN"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Screen4"
+            }
+          }
+        ]
+      }
+    ],
+    "CustomContainerDefinitions": [],
+    "Name": "MyApplication",
+    "Resolution": {
+      "Width": 320,
+      "Height": 240
+    },
+    "SelectedColorDepth": 16,
+    "StartupScreenName": "Screen1",
+    "SelectedStartupLanguage": "GB",
+    "TouchGfxPath": "../Middlewares/ST/touchgfx",
+    "UIPath": ".",
+    "AvailableColorDepths": [
+      16
+    ],
+    "AvailableLCDs": {
+      "16": "LCD16bppSerialFlash"
+    },
+    "AvailableSections": [
+      "ExtFlashSection",
+      "IntFlashSection"
+    ],
+    "AvailableResolutions": [
+      {
+        "Width": 320,
+        "Height": 240
+      }
+    ],
+    "PhysicalButtons": [
+      {
+        "Name": "None"
+      },
+      {
+        "Key": 1,
+        "Name": "UP"
+      },
+      {
+        "Key": 2,
+        "Name": "DOWN"
+      }
+    ],
+    "FrameworkFeatures": {
+      "LCD16bppSerialFlash": {
+        "Id": "LCD16bppSerialFlash",
+        "IsEnabled": true
+      }
+    },
+    "GenerateAssetsCommand": "make -f simulator/gcc/Makefile assets -j8",
+    "PostGenerateCommand": "touchgfx update_project --project-file=simulator/msvs/Application.vcxproj",
+    "PostGenerateTargetCommand": "touchgfx update_project",
+    "CompileSimulatorCommand": "make -f simulator/gcc/Makefile -j8",
+    "RunSimulatorCommand": "build\\bin\\simulator.exe",
+    "LandscapeSkinX": 0,
+    "LandscapeSkinY": 0,
+    "PortraitSkinX": 0,
+    "PortraitSkinY": 0,
+    "DisplayOrientation": "Landscape",
+    "Family": "STM32F4",
+    "SubFamily": "STM32F446",
+    "Toolchain": "STM32CubeIDE",
+    "Platform": "m4",
+    "ProjectFile": "../XNUCLEO_GFX01M1_F446ZE.ioc",
+    "OptionalComponentsRoot": "../Middlewares/ST/touchgfx_components",
+    "OptionalComponents": [],
+    "AdditionalFeatures": []
+  },
+  "Version": "4.24.1"
+}

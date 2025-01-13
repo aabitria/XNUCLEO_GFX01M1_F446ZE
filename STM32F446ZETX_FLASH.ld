@@ -44,13 +44,21 @@ _Min_Stack_Size = 0x400; /* required amount of stack */
 /* Memories definition */
 MEMORY
 {
-  RAM    (xrw)    : ORIGIN = 0x20000000,   LENGTH = 128K
-  FLASH    (rx)    : ORIGIN = 0x8000000,   LENGTH = 512K
+  RAM       (xrw)    : ORIGIN = 0x20000000,   LENGTH = 128K
+  FLASH     (rx)     : ORIGIN = 0x8000000,    LENGTH = 512K
+  SPI_FLASH (r)      : ORIGIN = 0x90000000,   LENGTH = 8M
 }
 
 /* Sections */
 SECTIONS
 {
+  ExtFlashSection :
+  {
+    *(ExtFlashSection ExtFlashSection.*)
+    *(-gnu-linkonce.r.*)
+    . = ALIGN(0x100);
+  } >SPI_FLASH
+
   /* The startup code into "FLASH" Rom type memory */
   .isr_vector :
   {

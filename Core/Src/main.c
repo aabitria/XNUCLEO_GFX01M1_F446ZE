@@ -18,10 +18,12 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "crc.h"
 #include "spi.h"
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
+#include "app_touchgfx.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -93,6 +95,8 @@ int main(void)
   MX_SPI1_Init();
   MX_SPI2_Init();
   MX_TIM3_Init();
+  MX_CRC_Init();
+  MX_TouchGFX_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
@@ -103,6 +107,7 @@ int main(void)
   {
     /* USER CODE END WHILE */
 
+  MX_TouchGFX_Process();
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */

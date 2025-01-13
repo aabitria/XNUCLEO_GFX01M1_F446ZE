@@ -1,6 +1,7 @@
 # Eclipse
 [Rr]elease
 [Dd]ebug
-.launch
+Debug.launch
+*.launch
 .settings
 *.stldr
