@@ -308,6 +308,27 @@ void mx25_fastread (uint32_t start_page, uint32_t offset, uint8_t *data, uint16_
 }
 
 
+void mx25_fastread_dma (uint32_t start_page, uint32_t offset, uint8_t *data, uint16_t size)
+{
+    uint8_t spi_buf[5] = {0};			// Since our MX25 is only 8MB, addr is 24-bits only
+    uint32_t mem_addr = (start_page * MEMORY_PAGE_SIZE) + offset;
+
+    spi_buf[0] = FASTREAD;
+    spi_buf[1] = (mem_addr >> 16) & 0xFF;
+    spi_buf[2] = (mem_addr >> 8) & 0xFF;
+    spi_buf[3] = mem_addr & 0xFF;
+    spi_buf[4] = 0;   // dummy clock
+
+    mx25_select();
+    spi_write(spi_buf, sizeof(spi_buf));
+    //spi_read(data, size);
+    //mx25_unselect();
+
+    HAL_SPI_Receive_DMA(&hspi2, data, size);
+}
+
+
+
 void mx25_erase_sector (uint32_t sector)
 {
     uint8_t spi_buf[6];
@@ -458,6 +479,16 @@ void flash_read_memory (uint32_t address, uint32_t buffer_size, uint8_t *buffer)
 }
 
 
+void flash_read_memory_dma (uint32_t address, uint32_t buffer_size, uint8_t *buffer)
+{
+	/* Convert to page and offset as those are what fastread() needs */
+	uint32_t page = address / MEMORY_PAGE_SIZE;
+	uint32_t offset = address % MEMORY_PAGE_SIZE;
+
+	mx25_fastread_dma(page, offset, buffer, buffer_size);
+}
+
+
 void flash_sector_erase (uint32_t erase_start_addr, uint32_t erase_end_addr)
 {
     uint32_t start_sector = erase_start_addr / MEMORY_SECTOR_SIZE;
@@ -484,10 +515,12 @@ void flash_reset (void)
 	mx25_reset();
 }
 
-
+static uint8_t datareader_dma_active = 0;
 
 void DataReader_WaitForReceiveDone(void)
 {
+	while (datareader_dma_active != 0);
+
 	return;
 }
 
@@ -500,6 +533,17 @@ void DataReader_ReadData(uint32_t address24, uint8_t* buffer, uint32_t length)
 
 void DataReader_StartDMAReadData(uint32_t address24, uint8_t* buffer, uint32_t length)
 {
-	flash_read_memory(address24, length, buffer);
+	datareader_dma_active = 1;
+
+	flash_read_memory_dma(address24, length, buffer);
 }
 
+
+void HAL_SPI_RxCpltCallback(SPI_HandleTypeDef *hspi)
+{
+	if (hspi->Instance == SPI2)
+	{
+		mx25_unselect();
+		datareader_dma_active = 0;
+	}
+}
