@@ -28,6 +28,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "gfx01m1_lcd.h"
+#include "mx25.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -70,7 +71,7 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
-
+  uint32_t readid = 0;
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -98,6 +99,10 @@ int main(void)
   MX_CRC_Init();
   MX_TouchGFX_Init();
   /* USER CODE BEGIN 2 */
+  __HAL_SPI_ENABLE(&hspi2);
+  mx25_reset();
+  readid = mx25_readid();
+
   gfx01m1_lcd_init();
   /* USER CODE END 2 */
 

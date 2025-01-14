@@ -234,6 +234,8 @@ void gfx01m1_lcd_config(void)
 	HAL_Delay(50);
 	HAL_Delay(50);
 	gfx01m1_lcd_write_cmd(ILI9341_DISPLAY_ON); //display on
+
+	gfx01m1_lcd_set_orientation(LANDSCAPE);
 }
 
 

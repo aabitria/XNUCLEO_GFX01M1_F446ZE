@@ -37,8 +37,8 @@
 
 
 #define SPI                                     hspi2
-#define SPI2_NSS_GPIO_Port                      NOR_SCK_GPIO_Port
-#define SPI2_NSS_Pin                            NOR_SCK_Pin
+#define SPI2_NSS_GPIO_Port                      NOR_CS_GPIO_Port
+#define SPI2_NSS_Pin                            NOR_CS_Pin
 
 
 void mx25_write (uint32_t page, uint32_t offset, uint8_t *data, uint16_t size);
