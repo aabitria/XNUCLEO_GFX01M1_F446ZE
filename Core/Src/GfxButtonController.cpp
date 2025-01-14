@@ -8,22 +8,25 @@
 #include "main.h"
 #include "gpio.h"
 
+#define KEY_UP_IDX                      (0)
+#define KEY_DOWN_IDX                    KEY_UP_IDX + 1
+
 void GfxButtonController::init()
 {
-	for (uint16_t i = 0; i < 2; i++)
+	for (uint16_t i = 0; i < num_buttons; i++)
 	{
-		active_val[i] = 0;
-		idle_val[i] = 1;
+		active_val[i] = active_common;
+		idle_val[i] = idle_common;
 
-		if (active_val[i])
+		if (active_val[i])		// high when pressed
 		{
-			active_mask_debounce[i] = 0x00FF;
-			idle_mask_debounce[i] = 0xFF00;
+			active_mask_debounce[i] = mask;
+			idle_mask_debounce[i] = 0;
 		}
-		else
+		else					// low when pressed
 		{
-			active_mask_debounce[i] = 0xFF00;
-			idle_mask_debounce[i] = 0x00FF;
+			active_mask_debounce[i] = 0;
+			idle_mask_debounce[i] = mask;
 		}
 
 		if (idle_val[i] != 0)
@@ -43,23 +46,18 @@ void GfxButtonController::init()
 
 bool GfxButtonController::sample(uint8_t& key)
 {
-    if (detect_press_event(0))
+    if (detect_press_event(KEY_UP_IDX))
     {
-    	key = 1;
+    	key = KEY_UP_IDX + 1;		// 1
     	return true;
     }
 
-    if (detect_press_event(1))
+    if (detect_press_event(KEY_DOWN_IDX))
     {
-    	key = 2;
+    	key = KEY_DOWN_IDX + 1;		// 2
     	return true;
     }
 
-    num_run++;
-    if (num_run == 13)
-    {
-    	num_run = 13;
-    }
 	return false;
 }
 
@@ -81,20 +79,13 @@ uint16_t GfxButtonController::detect_press_event(uint16_t btn_idx)
 
 uint16_t GfxButtonController::debounce(uint16_t btn_idx)
 {
-	uint16_t val = 0;
-
-	if (btn_idx == 0)
+	if (btn_idx == KEY_UP_IDX)
 	{
-		raw_val[0] = HAL_GPIO_ReadPin(KEY_UP_GPIO_Port, KEY_UP_Pin);
+		raw_val[KEY_UP_IDX] = HAL_GPIO_ReadPin(KEY_UP_GPIO_Port, KEY_UP_Pin);
 	}
 	else
 	{
-		raw_val[1] = HAL_GPIO_ReadPin(KEY_DN_GPIO_Port, KEY_DN_Pin);
-	}
-
-	if (!raw_val[0] || !raw_val[1])
-	{
-		val++;
+		raw_val[KEY_DOWN_IDX] = HAL_GPIO_ReadPin(KEY_DN_GPIO_Port, KEY_DN_Pin);
 	}
 
 	state[btn_idx] = (state[btn_idx] << 1) | raw_val[btn_idx];

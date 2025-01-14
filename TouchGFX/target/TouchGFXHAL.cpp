@@ -25,7 +25,7 @@
 /* USER CODE BEGIN TouchGFXHAL.cpp */
 #include "GfxButtonController.hpp"
 
-GfxButtonController bc;
+GfxButtonController bc(0, 1);
 using namespace touchgfx;
 
 /* ******************************************************
