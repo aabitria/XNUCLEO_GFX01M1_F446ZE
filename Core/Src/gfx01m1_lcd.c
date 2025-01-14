@@ -292,6 +292,22 @@ void gfx01m1_lcd_draw_display(uint8_t *buf, uint16_t w, uint16_t h)
 	gfx01m1_lcd_write_data(buf, len);
 }
 
+
+void gfx01m1_lcd_draw_display_dma(uint8_t *buf, uint16_t w, uint16_t h)
+{
+	uint16_t len = w * h * sizeof(uint16_t);
+
+	array_endian_swap16(buf, len);
+
+	gfx01m1_lcd_write_cmd(ILI9341_GRAM);
+
+	gfx01m1_lcd_csx_low();
+    HAL_SPI_Transmit_DMA(&hspi1, buf, len);
+    //gfx01m1_lcd_csx_hi();
+
+}
+
+
 extern void DisplayDriver_TransferCompleteCallback(void);
 
 static int display_driver_transmit_active = 0;
@@ -306,20 +322,20 @@ void touchgfxDisplayDriverTransmitBlock(const uint8_t* pixels, uint16_t x, uint1
 {
 	display_driver_transmit_active = 1;
 	gfx01m1_lcd_set_display_area(x, y, (x + w - 1), (y + h - 1));
-	gfx01m1_lcd_draw_display((uint8_t *)pixels, w, h);
-	display_driver_transmit_active = 0;
-	DisplayDriver_TransferCompleteCallback();
+	gfx01m1_lcd_draw_display_dma((uint8_t *)pixels, w, h);
+//	display_driver_transmit_active = 0;
+//	DisplayDriver_TransferCompleteCallback();
 }
 
 
-//HAL_SPI_TxCpltCallback(SPI_HandleTypeDef *hspi)
-//{
-//	if (hspi->Instance == hspi1)
-//	{
-//		// Unselect the SPI line
-//		gfx01m1_lcd_csx_hi();
-//
-//
-//	}
-//}
+void HAL_SPI_TxCpltCallback(SPI_HandleTypeDef *hspi)
+{
+	if (hspi->Instance == SPI1)
+	{
+		// Unselect the SPI line
+		gfx01m1_lcd_csx_hi();
+		display_driver_transmit_active = 0;
+		DisplayDriver_TransferCompleteCallback();
+	}
+}
 

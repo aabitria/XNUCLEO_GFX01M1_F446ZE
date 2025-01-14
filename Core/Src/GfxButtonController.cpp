@@ -55,6 +55,11 @@ bool GfxButtonController::sample(uint8_t& key)
     	return true;
     }
 
+    num_run++;
+    if (num_run == 13)
+    {
+    	num_run = 13;
+    }
 	return false;
 }
 
@@ -76,28 +81,33 @@ uint16_t GfxButtonController::detect_press_event(uint16_t btn_idx)
 
 uint16_t GfxButtonController::debounce(uint16_t btn_idx)
 {
-	uint16_t val;
+	uint16_t val = 0;
 
 	if (btn_idx == 0)
 	{
-		val = HAL_GPIO_ReadPin(KEY_UP_GPIO_Port, KEY_UP_Pin);
+		raw_val[0] = HAL_GPIO_ReadPin(KEY_UP_GPIO_Port, KEY_UP_Pin);
 	}
 	else
 	{
-		val = HAL_GPIO_ReadPin(KEY_DN_GPIO_Port, KEY_DN_Pin);
+		raw_val[1] = HAL_GPIO_ReadPin(KEY_DN_GPIO_Port, KEY_DN_Pin);
 	}
 
-	state[btn_idx] = (state[btn_idx] << 1) | val;
+	if (!raw_val[0] || !raw_val[1])
+	{
+		val++;
+	}
+
+	state[btn_idx] = (state[btn_idx] << 1) | raw_val[btn_idx];
 
 	// continuous pressed state
-	if ((state[btn_idx] & active_mask_debounce[btn_idx]) == active_mask_debounce[btn_idx])
+	if ((state[btn_idx] & 0x0003) == active_mask_debounce[btn_idx])
 	{
 		steady_state[btn_idx] = active_val[btn_idx];
 		return active_val[btn_idx];
 	}
 
 	// continuous not pressed state
-	if ((state[btn_idx] & idle_mask_debounce[btn_idx]) == idle_mask_debounce[btn_idx])
+	if ((state[btn_idx] & 0x0003) == idle_mask_debounce[btn_idx])
 	{
 		steady_state[btn_idx] = idle_val[btn_idx];
 		return idle_val[btn_idx];
