@@ -14,6 +14,8 @@ public:
     {
         model = m;
     }
+
+    virtual void set_int(int num) {};  // to be implemented in presenter
 protected:
     Model* model;
 };

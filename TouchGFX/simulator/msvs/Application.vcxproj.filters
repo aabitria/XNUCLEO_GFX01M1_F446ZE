@@ -232,6 +232,18 @@
     <Filter Include="Header Files\generated\simulator\include\simulator\video">
       <UniqueIdentifier>10C3089F-8CCF-43A4-5C05-EFED7F6328A4</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\gui\datadisplay_screen">
+      <UniqueIdentifier>526246A6-6B04-0E1B-27FF-BA486BEF9D83</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\datadisplay_screen">
+      <UniqueIdentifier>7A8FCFD1-CECA-079F-F706-BC0120A09881</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\datadisplay_screen">
+      <UniqueIdentifier>B61793ED-4809-00C6-9A2B-44C11DB76087</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\datadisplay_screen">
+      <UniqueIdentifier>9294301D-6550-CCF1-12BA-0961B6157767</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(TouchGFXReleasePath)\framework\source\platform\driver\touch\SDL2TouchController.cpp">
@@ -308,6 +320,15 @@
     </ClCompile>
     <ClCompile Include="..\..\generated\simulator\src\video\SoftwareMJPEGDecoder.cpp">
       <Filter>Source Files\generated\simulator\video</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\datadisplay_screen\DataDisplayPresenter.cpp">
+      <Filter>Source Files\gui\datadisplay_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\datadisplay_screen\DataDisplayView.cpp">
+      <Filter>Source Files\gui\datadisplay_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\datadisplay_screen\DataDisplayViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\datadisplay_screen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -795,6 +816,15 @@
     </ClInclude>
     <ClInclude Include="..\..\generated\simulator\include\simulator\video\SoftwareMJPEGDecoder.hpp">
       <Filter>Header Files\generated\simulator\include\simulator\video</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\datadisplay_screen\DataDisplayPresenter.hpp">
+      <Filter>Header Files\gui\datadisplay_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\datadisplay_screen\DataDisplayView.hpp">
+      <Filter>Header Files\gui\datadisplay_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\datadisplay_screen\DataDisplayViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\datadisplay_screen</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -12,6 +12,9 @@ enum LANGUAGES
 
 enum TEXTS
 {
+    T___SINGLEUSE_DBTK,
+    T___SINGLEUSE_W5ED,
+    T_TITLE,
     NUMBER_OF_TEXT_KEYS
 };
 

@@ -36,4 +36,13 @@ void Screen1ViewBase::handleKeyEvent(uint8_t key)
         application().gotoScreen2ScreenNoTransition();
     
     }
+
+    if(2 == key)
+    {
+        //Interaction2
+        //When hardware button 2 clicked change screen to DataDisplay
+        //Go to DataDisplay with no screen transition
+        application().gotoDataDisplayScreenNoTransition();
+    
+    }
 }

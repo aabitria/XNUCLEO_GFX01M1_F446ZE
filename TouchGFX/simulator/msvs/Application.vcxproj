@@ -36,6 +36,9 @@
     <ClCompile Include="..\..\gui\src\screen5_screen\Screen5View.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\screen5_screen\Screen5ViewBase.cpp"/>
     <ClCompile Include="..\..\generated\simulator\src\video\SoftwareMJPEGDecoder.cpp"/>
+    <ClCompile Include="..\..\gui\src\datadisplay_screen\DataDisplayPresenter.cpp"/>
+    <ClCompile Include="..\..\gui\src\datadisplay_screen\DataDisplayView.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\datadisplay_screen\DataDisplayViewBase.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xml"/>
@@ -201,6 +204,9 @@
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen5_screen\Screen5ViewBase.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\common\SimConstants.hpp"/>
     <ClInclude Include="..\..\generated\simulator\include\simulator\video\SoftwareMJPEGDecoder.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\datadisplay_screen\DataDisplayPresenter.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\datadisplay_screen\DataDisplayView.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\datadisplay_screen\DataDisplayViewBase.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>

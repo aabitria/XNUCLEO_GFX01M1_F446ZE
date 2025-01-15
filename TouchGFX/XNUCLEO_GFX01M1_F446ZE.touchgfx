@@ -2,6 +2,107 @@
   "Application": {
     "Screens": [
       {
+        "Name": "DataDisplay",
+        "Components": [
+          {
+            "Type": "Box",
+            "Name": "box1",
+            "Width": 320,
+            "Height": 240,
+            "Color": {
+              "Red": 225,
+              "Green": 245,
+              "Blue": 239
+            }
+          },
+          {
+            "Type": "Box",
+            "Name": "box2",
+            "Width": 320,
+            "Height": 50,
+            "Color": {
+              "Red": 150,
+              "Green": 212,
+              "Blue": 250
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textArea1",
+            "X": 68,
+            "Y": 15,
+            "Width": 169,
+            "Height": 20,
+            "TextId": "Title",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 250,
+              "Green": 113,
+              "Blue": 7
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "BoxWithBorder",
+            "Name": "boxWithBorder1",
+            "X": 52,
+            "Y": 77,
+            "Width": 216,
+            "Height": 95,
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "BorderSize": 5
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textArea2",
+            "X": 135,
+            "Y": 104,
+            "Width": 50,
+            "Height": 41,
+            "TextId": "__SingleUse_W5ED",
+            "TextRotation": "0",
+            "AutoSize": true,
+            "Wildcard1": {
+              "TextId": "__SingleUse_DBTK",
+              "UseBuffer": true,
+              "BufferSize": 3
+            }
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 1,
+              "Name": "UP"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Screen1"
+            }
+          },
+          {
+            "InteractionName": "Interaction2",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 2,
+              "Name": "DOWN"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Screen5"
+            }
+          }
+        ]
+      },
+      {
         "Name": "Screen1",
         "Components": [
           {
@@ -17,13 +118,25 @@
             "InteractionName": "Interaction1",
             "Trigger": {
               "Type": "TriggerPhysicalButtonClicked",
-              "ButtonKey": 1,
-              "Name": "UP"
+              "ButtonKey": 1
             },
             "Action": {
               "Type": "ActionGotoScreen",
               "ScreenTransitionType": "ScreenTransitionNone",
               "ActionComponent": "Screen2"
+            }
+          },
+          {
+            "InteractionName": "Interaction2",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 2,
+              "Name": "DOWN"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "DataDisplay"
             }
           }
         ]
@@ -44,8 +157,7 @@
             "InteractionName": "Interaction1",
             "Trigger": {
               "Type": "TriggerPhysicalButtonClicked",
-              "ButtonKey": 1,
-              "Name": "UP"
+              "ButtonKey": 1
             },
             "Action": {
               "Type": "ActionGotoScreen",
@@ -57,8 +169,7 @@
             "InteractionName": "Interaction2",
             "Trigger": {
               "Type": "TriggerPhysicalButtonClicked",
-              "ButtonKey": 2,
-              "Name": "DOWN"
+              "ButtonKey": 2
             },
             "Action": {
               "Type": "ActionGotoScreen",
@@ -84,8 +195,7 @@
             "InteractionName": "Interaction1",
             "Trigger": {
               "Type": "TriggerPhysicalButtonClicked",
-              "ButtonKey": 1,
-              "Name": "UP"
+              "ButtonKey": 1
             },
             "Action": {
               "Type": "ActionGotoScreen",
@@ -97,8 +207,7 @@
             "InteractionName": "Interaction2",
             "Trigger": {
               "Type": "TriggerPhysicalButtonClicked",
-              "ButtonKey": 2,
-              "Name": "DOWN"
+              "ButtonKey": 2
             },
             "Action": {
               "Type": "ActionGotoScreen",
@@ -124,8 +233,7 @@
             "InteractionName": "Interaction1",
             "Trigger": {
               "Type": "TriggerPhysicalButtonClicked",
-              "ButtonKey": 1,
-              "Name": "UP"
+              "ButtonKey": 1
             },
             "Action": {
               "Type": "ActionGotoScreen",
@@ -137,8 +245,7 @@
             "InteractionName": "Interaction2",
             "Trigger": {
               "Type": "TriggerPhysicalButtonClicked",
-              "ButtonKey": 2,
-              "Name": "DOWN"
+              "ButtonKey": 2
             },
             "Action": {
               "Type": "ActionGotoScreen",
@@ -166,13 +273,25 @@
             "InteractionName": "Interaction1",
             "Trigger": {
               "Type": "TriggerPhysicalButtonClicked",
-              "ButtonKey": 2,
-              "Name": "DOWN"
+              "ButtonKey": 2
             },
             "Action": {
               "Type": "ActionGotoScreen",
               "ScreenTransitionType": "ScreenTransitionNone",
               "ActionComponent": "Screen4"
+            }
+          },
+          {
+            "InteractionName": "Interaction2",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 1,
+              "Name": "UP"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "DataDisplay"
             }
           }
         ]
@@ -185,7 +304,7 @@
       "Height": 240
     },
     "SelectedColorDepth": 16,
-    "StartupScreenName": "Screen1",
+    "StartupScreenName": "DataDisplay",
     "SelectedStartupLanguage": "GB",
     "TouchGfxPath": "../Middlewares/ST/touchgfx",
     "UIPath": ".",
