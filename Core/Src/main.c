@@ -30,6 +30,7 @@
 /* USER CODE BEGIN Includes */
 #include "gfx01m1_lcd.h"
 #include "mx25.h"
+#include "ds18b20.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -99,6 +100,7 @@ int main(void)
   MX_SPI2_Init();
   MX_TIM3_Init();
   MX_CRC_Init();
+  MX_USART6_UART_Init();
   MX_TouchGFX_Init();
   /* USER CODE BEGIN 2 */
   __HAL_SPI_ENABLE(&hspi2);

@@ -18,6 +18,8 @@ protected:
     ModelListener* modelListener;
     int num;
     int counter = 0;
+
+    float temperature = 0.0f;
 };
 
 #endif // MODEL_HPP
