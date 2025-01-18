@@ -30,6 +30,6 @@ void Model::tick()
     		temperature = (float)temp / 16.0f;
     	}
     }
-    modelListener->set_int(num);
+    modelListener->set_temp(temperature);
     counter++;
 }

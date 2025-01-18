@@ -3,6 +3,7 @@
     "Screens": [
       {
         "Name": "DataDisplay",
+        "CanvasBufferSize": 4800,
         "Components": [
           {
             "Type": "Box",
@@ -19,7 +20,7 @@
             "Type": "Box",
             "Name": "box2",
             "Width": 320,
-            "Height": 50,
+            "Height": 35,
             "Color": {
               "Red": 150,
               "Green": 212,
@@ -29,10 +30,10 @@
           {
             "Type": "TextArea",
             "Name": "textArea1",
-            "X": 68,
-            "Y": 15,
-            "Width": 169,
-            "Height": 20,
+            "X": 32,
+            "Y": 5,
+            "Width": 257,
+            "Height": 24,
             "TextId": "Title",
             "TextRotation": "0",
             "Color": {
@@ -43,25 +44,48 @@
             "AutoSize": true
           },
           {
-            "Type": "BoxWithBorder",
-            "Name": "boxWithBorder1",
-            "X": 52,
-            "Y": 77,
-            "Width": 216,
-            "Height": 95,
+            "Type": "Circle",
+            "Name": "circle1",
+            "X": 70,
+            "Y": 47,
+            "Width": 180,
+            "Height": 180,
             "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
+              "Red": 44,
+              "Green": 199,
+              "Blue": 67
             },
-            "BorderSize": 5
+            "CenterX": 90.0,
+            "CenterY": 90.0,
+            "Radius": 90.0,
+            "StartAngle": -120.0,
+            "EndAngle": 120.0,
+            "CapPrecision": "Butt"
+          },
+          {
+            "Type": "Circle",
+            "Name": "circle2",
+            "X": 90,
+            "Y": 67,
+            "Width": 140,
+            "Height": 140,
+            "Color": {
+              "Red": 225,
+              "Green": 245,
+              "Blue": 239
+            },
+            "CenterX": 70.0,
+            "CenterY": 70.0,
+            "Radius": 65.0,
+            "EndAngle": 360.0,
+            "CapPrecision": "Butt"
           },
           {
             "Type": "TextArea",
             "Name": "textArea2",
-            "X": 135,
-            "Y": 104,
-            "Width": 50,
+            "X": 115,
+            "Y": 111,
+            "Width": 90,
             "Height": 41,
             "TextId": "__SingleUse_W5ED",
             "TextRotation": "0",
@@ -69,7 +93,7 @@
             "Wildcard1": {
               "TextId": "__SingleUse_DBTK",
               "UseBuffer": true,
-              "BufferSize": 3
+              "BufferSize": 5
             }
           }
         ],
@@ -78,8 +102,7 @@
             "InteractionName": "Interaction1",
             "Trigger": {
               "Type": "TriggerPhysicalButtonClicked",
-              "ButtonKey": 1,
-              "Name": "UP"
+              "ButtonKey": 1
             },
             "Action": {
               "Type": "ActionGotoScreen",
@@ -91,8 +114,7 @@
             "InteractionName": "Interaction2",
             "Trigger": {
               "Type": "TriggerPhysicalButtonClicked",
-              "ButtonKey": 2,
-              "Name": "DOWN"
+              "ButtonKey": 2
             },
             "Action": {
               "Type": "ActionGotoScreen",
@@ -130,8 +152,7 @@
             "InteractionName": "Interaction2",
             "Trigger": {
               "Type": "TriggerPhysicalButtonClicked",
-              "ButtonKey": 2,
-              "Name": "DOWN"
+              "ButtonKey": 2
             },
             "Action": {
               "Type": "ActionGotoScreen",
@@ -285,8 +306,7 @@
             "InteractionName": "Interaction2",
             "Trigger": {
               "Type": "TriggerPhysicalButtonClicked",
-              "ButtonKey": 1,
-              "Name": "UP"
+              "ButtonKey": 1
             },
             "Action": {
               "Type": "ActionGotoScreen",

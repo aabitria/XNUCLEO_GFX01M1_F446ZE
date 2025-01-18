@@ -15,7 +15,7 @@ public:
         model = m;
     }
 
-    virtual void set_int(int num) {};  // to be implemented in presenter
+    virtual void set_temp(float temp) {};  // to be implemented in presenter
 protected:
     Model* model;
 };

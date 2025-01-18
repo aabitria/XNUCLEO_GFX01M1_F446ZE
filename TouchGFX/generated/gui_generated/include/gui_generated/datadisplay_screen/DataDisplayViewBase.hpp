@@ -9,7 +9,8 @@
 #include <gui/datadisplay_screen/DataDisplayPresenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
-#include <touchgfx/widgets/BoxWithBorder.hpp>
+#include <touchgfx/widgets/canvas/Circle.hpp>
+#include <touchgfx/widgets/canvas/PainterRGB565.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 
 class DataDisplayViewBase : public touchgfx::View<DataDisplayPresenter>
@@ -32,16 +33,25 @@ protected:
     touchgfx::Box box1;
     touchgfx::Box box2;
     touchgfx::TextArea textArea1;
-    touchgfx::BoxWithBorder boxWithBorder1;
+    touchgfx::Circle circle1;
+    touchgfx::PainterRGB565 circle1Painter;
+    touchgfx::Circle circle2;
+    touchgfx::PainterRGB565 circle2Painter;
     touchgfx::TextAreaWithOneWildcard textArea2;
 
     /*
      * Wildcard Buffers
      */
-    static const uint16_t TEXTAREA2_SIZE = 3;
+    static const uint16_t TEXTAREA2_SIZE = 5;
     touchgfx::Unicode::UnicodeChar textArea2Buffer[TEXTAREA2_SIZE];
 
 private:
+
+    /*
+     * Canvas Buffer Size
+     */
+    static const uint32_t CANVAS_BUFFER_SIZE = 4800;
+    uint8_t canvasBuffer[CANVAS_BUFFER_SIZE];
 
 };
 

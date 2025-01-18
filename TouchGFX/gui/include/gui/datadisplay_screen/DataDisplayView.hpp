@@ -12,7 +12,7 @@ public:
     virtual void setupScreen();
     virtual void tearDownScreen();
 
-    virtual void set_display_number(int number);
+    virtual void set_display_temp(float temp);
 protected:
 };
 

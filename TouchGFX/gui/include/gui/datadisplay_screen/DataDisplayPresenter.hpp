@@ -27,7 +27,7 @@ public:
 
     virtual ~DataDisplayPresenter() {}
 
-    virtual void set_int(int number);
+    virtual void set_temp(float num);
 
 private:
     DataDisplayPresenter();

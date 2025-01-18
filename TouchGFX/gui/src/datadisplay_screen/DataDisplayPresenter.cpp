@@ -17,7 +17,7 @@ void DataDisplayPresenter::deactivate()
 
 }
 
-void DataDisplayPresenter::set_int(int number)
+void DataDisplayPresenter::set_temp(float number)
 {
-    view.set_display_number(number);
+    view.set_display_temp(number);
 }
